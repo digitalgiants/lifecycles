@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Red Hat Lifecycle Management</title>
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+    const ProductsView = {
+        data: [],
+        error: null,
+
+        oninit: () => {
+            // For demo, use your provided data string parsed
+            const jsonData = JSON.parse('[{"_id":"6877d61f72b8357f8ba211b0","product":[{"linux":[{"Red Hat Engerprise Linux":[{"RHEL 8":[{"major-version":8,"minor-version":4,"end-date":"September 2025"},{"major-version":8,"minor-version":6,"end-date":"September 2026"},{"major-version":8,"minor-version":8,"end-date":"September 2027"},{"major-version":8,"minor-version":10,"end-date":"September 2029"}]},{"RHEL 9":[{"major-version":9,"minor-version":0,"end-date":"March 2026"},{"major-version":9,"minor-version":2,"end-date":"March 2027"},{"major-version":9,"minor-version":4,"end-date":"March 2028"},{"major-version":9,"minor-version":6,"end-date":"March 2029"},{"major-version":9,"minor-version":7,"end-date":"March 2026"},{"major-version":9,"minor-version":8,"end-date":"March 2030"},{"major-version":9,"minor-version":9,"end-date":"March 2027"},{"major-version":9,"minor-version":10,"end-date":"March 2032"}]},{"RHEL 10":[{"major-version":10,"minor-version":0,"end-date":"April 2029"},{"major-version":10,"minor-version":1,"end-date":"April 2026"},{"major-version":10,"minor-version":2,"end-date":"April 2030"},{"major-version":10,"minor-version":3,"end-date":"April 2027"},{"major-version":10,"minor-version":4,"end-date":"April 2031"},{"major-version":10,"minor-version":5,"end-date":"April 2028"},{"major-version":10,"minor-version":6,"end-date":"April 2032"},{"major-version":10,"minor-version":7,"end-date":"April 2029"},{"major-version":10,"minor-version":8,"end-date":"April 2033"},{"major-version":10,"minor-version":9,"end-date":"April 2030"},{"major-version":10,"minor-version":10,"end-date":"April 2035"}]}]}]},{"Ansible Automation Platform":[{"Version":2.4,"end-date":"June 30th, 2026"},{"version":2.5,"end-date":"September 30, 2027"}]},{"Ansible Core":[{"version":2.15,"end-date":"june 2026"},{"version":2.16,"end-date":"June 2026"},{"version":2.17,"end-date":"curently in GA"},{"version":2.18,"end-date":"currently in GA"},{"ee-notes":[{"ee-2.15":"supported and default for 2.4 for entire life"},{"ee-2.16":"default for 2.5 and supported for RHEL8"},{"ee-2.17":"interim release for customers to move to latest"},{"ee-2.18":"latest core for newest features supported for all of 2.5"}]}]},{"OpenShift":[{"overview":"Red Hat OpenShift container platform v4 provides a time-delineated, phased life cycle, where in at least 4 minor versions can be supported at any time. The time period of support is fixed from the point of minor version release and offers varying levels of support and maintenance. Red Hat aims to forecast releases at a 4 month cadence, providing customers ample opportunity to plan."},{"version":4.12,"support-type":"Extended","end-date":"January 2026"},{"version":4.14,"support-type":"Extended","end-date":"October 2026"},{"version":4.15,"support-type":"Maintenance","end-date":"August 2025"},{"version":4.16,"support-type":"Maintenance","end-date":"June 2027"},{"version":4.17,"support-type":"Maintenance","end-date":"April 2026"},{"version":4.18,"support-type":"Full","end-date":"February 2028"},{"version":4.19,"support-type":"Full","end-date":"December 2026"}]}]}]');
+
+            // Save the product array from the first object
+            ProductsView.data = jsonData[0].product || [];
+        },
+
+        // Helper to render deeply nested arrays/objects as tables
+        renderTable: function(data, title) {
+            // If data is an array of objects with keys, make table rows
+            if (!data || !Array.isArray(data)) return m("p", "No data to display");
+
+            // Collect all keys for header from all items (union of keys)
+            const headers = Array.from(
+                new Set(data.flatMap(item => Object.keys(item)))
+            );
+
+            return m("div", { style: { marginBottom: "2em" } }, [
+                m("h2", title),
+                m("table", { border: 1, cellpadding: 5, cellspacing: 0, style: { borderCollapse: "collapse", width: "100%" } }, [
+                    m("thead",
+                        m("tr", headers.map(h => m("th", h)))
+                    ),
+                    m("tbody",
+                        data.map(row =>
+                            m("tr", headers.map(h =>
+                                {
+                                    const val = row[h];
+                                    if (Array.isArray(val)) {
+                                        // Recursive render if value is array (nested table)
+                                        return m("td", ProductsView.renderTable(val, ""));
+                                    } else if (typeof val === "object" && val !== null) {
+                                        // Pretty-print object JSON
+                                        return m("td", m("pre", JSON.stringify(val, null, 2)));
+                                    } else {
+                                        return m("td", val != null ? val.toString() : "");
+                                    }
+                                }
+                            ))
+                        )
+                    )
+                ])
+            ]);
+        },
+
+        view: function() {
+            if (ProductsView.data.length === 0) {
+                return m("p", "Loading data...");
+            }
+
+            return m("div", [
+                ProductsView.data.map(productEntry => {
+                    // productEntry looks like: { linux: [...] } or { "Ansible Automation Platform": [...] }
+                    const productName = Object.keys(productEntry)[0];
+                    const productData = productEntry[productName];
+                    return ProductsView.renderTable(productData, productName);
+                })
+            ]);
+        }
+    };
+
+    m.mount(document.getElementById("app"), ProductsView);
+</script>
+</body>
+</html>

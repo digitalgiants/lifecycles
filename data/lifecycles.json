@@ -1,0 +1,229 @@
+{
+  "product": [
+    {
+      "linux": [
+        {
+          "Red Hat Engerprise Linux": [
+            {
+              "RHEL 8": [
+                {
+                  "major-version": 8,
+                  "minor-version": 4,
+                  "end-date": "September 2025"
+                },
+                {
+                  "major-version": 8,
+                  "minor-version": 6,
+                  "end-date": "September 2026"
+                },
+                {
+                  "major-version": 8,
+                  "minor-version": 8,
+                  "end-date": "September 2027"
+                },
+                {
+                  "major-version": 8,
+                  "minor-version": 10,
+                  "end-date": "September 2029"
+                }
+              ]
+            },
+            {
+              "RHEL 9": [
+                {
+                  "major-version": 9,
+                  "minor-version": 0,
+                  "end-date": "March 2026"
+                },
+                {
+                  "major-version": 9,
+                  "minor-version": 2,
+                  "end-date": "March 2027"
+                },
+                {
+                  "major-version": 9,
+                  "minor-version": 4,
+                  "end-date": "March 2028"
+                },
+                {
+                  "major-version": 9,
+                  "minor-version": 6,
+                  "end-date": "March 2029"
+                },
+                {
+                  "major-version": 9,
+                  "minor-version": 7,
+                  "end-date": "March 2026"
+                },
+                {
+                  "major-version": 9,
+                  "minor-version": 8,
+                  "end-date": "March 2030"
+                },
+                {
+                  "major-version": 9,
+                  "minor-version": 9,
+                  "end-date": "March 2027"
+                },
+                {
+                  "major-version": 9,
+                  "minor-version": 10,
+                  "end-date": "March 2032"
+                }
+              ]
+            },
+            {
+              "RHEL 10": [
+                {
+                  "major-version": 10,
+                  "minor-version": 0,
+                  "end-date": "April 2029"
+                },
+                {
+                  "major-version": 10,
+                  "minor-version": 1,
+                  "end-date": "April 2026"
+                },
+                {
+                  "major-version": 10,
+                  "minor-version": 2,
+                  "end-date": "April 2030"
+                },
+                {
+                  "major-version": 10,
+                  "minor-version": 3,
+                  "end-date": "April 2027"
+                },
+                {
+                  "major-version": 10,
+                  "minor-version": 4,
+                  "end-date": "April 2031"
+                },
+                {
+                  "major-version": 10,
+                  "minor-version": 5,
+                  "end-date": "April 2028"
+                },
+                {
+                  "major-version": 10,
+                  "minor-version": 6,
+                  "end-date": "April 2032"
+                },
+                {
+                  "major-version": 10,
+                  "minor-version": 7,
+                  "end-date": "April 2029"
+                },
+                {
+                  "major-version": 10,
+                  "minor-version": 8,
+                  "end-date": "April 2033"
+                },
+                {
+                  "major-version": 10,
+                  "minor-version": 9,
+                  "end-date": "April 2030"
+                },
+                {
+                  "major-version": 10,
+                  "minor-version": 10,
+                  "end-date": "April 2035"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Ansible Automation Platform": [
+        {
+          "Version": 2.4,
+          "end-date": "June 30th, 2026"
+        },
+        {
+          "version": 2.5,
+          "end-date": "September 30, 2027"
+        }
+      ]
+    },
+    {
+      "Ansible Core": [
+        {
+          "version": 2.15,
+          "end-date": "june 2026"
+        },
+        {
+          "version": 2.16,
+          "end-date": "June 2026"
+        },
+        {
+          "version": 2.17,
+          "end-date": "curently in GA"
+        },
+        {
+          "version": 2.18,
+          "end-date": "currently in GA"
+        },
+        {
+          "ee-notes": [
+            {
+              "ee-2.15": "supported and default for 2.4 for entire life"
+            },
+            {
+              "ee-2.16": "default for 2.5 and supported for RHEL8"
+            },
+            {
+              "ee-2.17": "interim release for customers to move to latest"
+            },
+            {
+              "ee-2.18": "latest core for newest features supported for all of 2.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "OpenShift": [
+        {
+          "overview": "Red Hat OpenShift container platform v4 provides a time-delineated, phased life cycle, where in at least 4 minor versions can be supported at any time. The time period of support is fixed from the point of minor version release and offers varying levels of support and maintenance. Red Hat aims to forecast releases at a 4 month cadence, providing customers ample opportunity to plan."
+        },
+        {
+          "version": 4.12,
+          "support-type": "Extended",
+          "end-date": "January 2026"
+        },
+        {
+          "version": 4.14,
+          "support-type": "Extended",
+          "end-date": "October 2026"
+        },
+        {
+          "version": 4.15,
+          "support-type": "Maintenance",
+          "end-date": "August 2025"
+        },
+        {
+          "version": 4.16,
+          "support-type": "Maintenance",
+          "end-date": "June 2027"
+        },
+        {
+          "version": 4.17,
+          "support-type": "Maintenance",
+          "end-date": "April 2026"
+        },
+        {
+          "version": 4.18,
+          "support-type": "Full",
+          "end-date": "February 2028"
+        },
+        {
+          "version": 4.19,
+          "support-type": "Full",
+          "end-date": "December 2026"
+        }
+      ]
+    }
+  ]
+}
