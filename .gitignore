@@ -1,0 +1,65 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Build output
+dist/
+build/
+tmp/
+temp/
+.cache/
+
+# IDEs/editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional npm cache directory
+.npm/
+
+# Optional yarn cache
+.yarn/cache/
+.pnp.*
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# PM2 logs
+*.pm2.log
+
+# Optional: if using TypeScript
+*.tsbuildinfo
+
+# Optional: if using next.js
+.next/
+
+# Optional: if using vercel
+.vercel/
+
